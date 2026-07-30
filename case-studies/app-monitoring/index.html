@@ -1,0 +1,129 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-skaurlmh> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v6.0.8"><title>Monitoring enterprise Atlassian portfolios – Imran Parvez</title><link rel="stylesheet" href="/_astro/_slug_@_@astro.CzDx55tx.css"></head> <body data-astro-cid-skaurlmh> <!-- NAV --> <div class="container" data-astro-cid-skaurlmh> <nav class="nav" data-astro-cid-skaurlmh> <a href="/" class="nav__back" data-astro-cid-skaurlmh>← Back</a> </nav> </div> <!-- PAGE HEADER --> <div class="container" data-astro-cid-skaurlmh> <header class="page-header" data-astro-cid-skaurlmh> <p class="page-header__label" data-astro-cid-skaurlmh>Lead Product Designer · Atlassian Administration</p> <h1 class="page-header__title" data-astro-cid-skaurlmh>Monitoring enterprise Atlassian portfolios</h1> </header> </div> <!-- INTRO COLUMNS --> <div class="intro" data-astro-cid-skaurlmh> <div class="intro__summary" data-astro-cid-skaurlmh> <p data-astro-cid-skaurlmh>Atlassian&#39;s customers in the cloud lacked monitoring capabilities for their deployment. On-premise customers owned the infrastructure, which meant they could monitor almost everything in depth. When they moved to cloud they lost that capability entirely. Some customers currently leverage third-party monitoring tools like Dynatrace and Datadog, however synthetic measurement alone can be inconsistent and incomplete. I led the strategy to design monitoring capabilities for enterprises. We went from almost no monitoring to building capabilities for performance and usage monitoring for each individual product like jira/confluence and for the entire Atlassian portfolio in Admin hub. Closing this gap helps us retain the largest customers like NVIDIA, AMD and JPMC</p> </div> <div class="intro__context" data-astro-cid-skaurlmh> <p class="intro__col-label" data-astro-cid-skaurlmh>About the product</p> <p class="intro__product" data-astro-cid-skaurlmh>Atlassian Administration is the hub used by organisation administrators to administer their entire Atlassian portfolio. Similarly each individual deployed product has its own administration area like Jira administration and Confluence administration. </p> </div> <div class="intro__meta" data-astro-cid-skaurlmh> <p class="intro__col-label" data-astro-cid-skaurlmh>Details</p> <div class="intro__meta-list" data-astro-cid-skaurlmh> <div class="intro__meta-item" data-astro-cid-skaurlmh> <span class="intro__meta-key" data-astro-cid-skaurlmh>Role</span> <span class="intro__meta-value" data-astro-cid-skaurlmh>Lead Product Designer</span> </div> <div class="intro__meta-item" data-astro-cid-skaurlmh> <span class="intro__meta-key" data-astro-cid-skaurlmh>Timeline</span> <span class="intro__meta-value" data-astro-cid-skaurlmh>Sep 2025 - Present</span> </div> <div class="intro__meta-item" data-astro-cid-skaurlmh> <span class="intro__meta-key" data-astro-cid-skaurlmh>Team</span> <span class="intro__meta-value" data-astro-cid-skaurlmh>4 Designers</span> </div> <div class="intro__meta-item" data-astro-cid-skaurlmh> <span class="intro__meta-key" data-astro-cid-skaurlmh>Org</span> <span class="intro__meta-value" data-astro-cid-skaurlmh>Atlassian Administration</span> </div> </div> </div> </div>  <!-- BODY CONTENT --> <div class="container" data-astro-cid-skaurlmh> <div class="prose" data-astro-cid-skaurlmh> <h1 id="problem">Problem</h1>
+<p>Atlassian’s on-premise offering gave large customers the control, custom APIs, and hardware access they needed to heavily monitor and troubleshoot their Atlassian tools.</p>
+<p>Customers were unhappy with nothing being offered to monitor Atlassian’s cloud solutions. Administrators (Product Owners) are responsible for smooth operations of tools like jira and confluence in their organisations. Admins were forced to manage Jira and Confluence completely in the dark.</p>
+<h1 id="current-monitoring-offering">Current monitoring offering</h1>
+<div class="img-row img-row--4">
+  <div class="img-row__item">
+    <img src="/status-page.png" alt="Status Page">
+    <p class="img-row__title">Status Page</p>
+    <p class="img-row__desc">Informs customers or users about outages and scheduled maintenance.</p>
+  </div>
+  <div class="img-row__item">
+    <img src="/system-health.png" alt="System Health">
+    <p class="img-row__title">System Health</p>
+    <p class="img-row__desc">Allows you to monitor incidents that impact your Cloud apps and subscribe to incident notifications tailored to your preferences.</p>
+  </div>
+  <div class="img-row__item">
+    <img src="/app-mau.png" alt="App MAU">
+    <p class="img-row__title">App MAU</p>
+    <p class="img-row__desc">Daily tracking of usage of Atlassian products</p>
+  </div>
+  <div class="img-row__item">
+    <img src="/audit-log.png" alt="Audit Log">
+    <p class="img-row__title">Audit Log</p>
+    <p class="img-row__desc">Allows monitoring and audit activity in organisation</p>
+  </div>
+</div>
+<p>The above offering was not even close to helping organisation admins perform their responsibilities effectively.</p>
+<p>“Lacking essential telemetry and observability for reliability, compliance, and UX, [customer name] has flagged this gap as a cloud migration blocker. Their next steps hinge on reviewing our prototype mocks.” - Enterprise customer</p>
+<h1 id="design-strategy">Design strategy:</h1>
+<p>The research team at Atlassian put together a list of top admin tasks and the number 1 in it was - Performance monitoring. To understand this task in more detail we decided to do three things</p>
+<ol>
+<li>Customer interviews</li>
+<li>Analyse customer observability setups</li>
+<li>Analyse the templates provided by top monitoring tools (grafana, dynatrace etc.)</li>
+</ol>
+<p>Based on our research we decided to break down this top task - Performance monitoring to three areas:</p>
+<ol>
+<li>Reliability</li>
+<li>Performance</li>
+<li>Usage</li>
+</ol>
+<p>In this case study we’ll only look into Performance monitoring. I proposed breaking the performance area into:</p>
+<ol>
+<li>Load times - directed by me</li>
+<li>Client setup analysis - owned by me</li>
+<li>Slow entities (boards, filters, pages) - delegated to another designer</li>
+</ol>
+<p>Our design strategy:</p>
+<ol>
+<li>develop the solution at two levels: org level in atlassian administration and app level in app administration for each app like Jira or Confluence. In the org level we’ll be reporting across the entire org and at the app level it’s going to be just for that particular app.</li>
+<li>Insights and recommendations scoped to the level. An org admin typically performs actions that affect the entire org and accordingly app admin’s actions affect just that app. Hence I decided to show relevant insights scoped to the right level for actionability. For example: Optimizing boards can be done by app admin, org admin simply has no visibility into the app to do any actions there.</li>
+</ol>
+<img src="/overall-architecture.png" alt="Architecture diagram" style="width:100%;border-radius:8px;margin:24px 0;">
+<h1 id="process">Process</h1>
+<p>In this project I relied heavily on AI tools during the entire process and encouraged my team to do the same.</p>
+<ol>
+<li>All customer calls were analysed and relayed to a common slack group for insights and shared understanding.</li>
+<li>AI prototyping was used for explorations</li>
+<li>Prototypes were enriched with real customer data</li>
+<li>Customers were provided these prototypes with their own data to test and give us feedback</li>
+<li>Lead engineer collaborated with us to write scripts so that we could hook real data to any further updates to the prototypes</li>
+<li>Prototype and Specs were handed over to developers</li>
+</ol>
+<h1 id="design-problem">Design problem</h1>
+<p>The central design question for the org overview was : How might an org admin quickly assess the overall health of all their organisation’s apps? The answer I pursued was a “big hero metric” - one authoritative number that could anchor the page and give admins an immediate read on performance.</p>
+<p>I explored 3 candidates for the big hero metric:</p>
+<ol>
+<li>Apdex score - An industry standard measure of application responsiveness, scored 0-1 based on satisfied, tolerating and frustrated thresholds.</li>
+<li>Composite TTVC score - normalizes the time to visually complete metrics across apps to a 0-100 scale.</li>
+<li>Performance threshold chart - a percentage-based visualization of users in excellent/acceptable/unacceptable bands.</li>
+</ol>
+<p>Apdex stood out to me. It’s already used by teams at Google, Github and Datadog. TTVC on the other hand was measured at Atlassian much differently than how it’s prescribed in the industry. Below you can see explorations with Apdex as the hero metric.</p>
+<div class="img-full"><img src="/apdex-direction.png" alt="Explorations for user setup charts"></div>
+<p>When I sparred this idea with the leadership team a specific business constraint emerged “Do not label a site or org as FAST / Moderate / Slow.” Apdex works precisely by assigning a categorical judgement.</p>
+<p>We made a pivot, instead of apdex we moved to a Fast/Moderate/Slow distribution - a percentage-based bucketing approach for all the page loads in the org / product. The admins could use their judgement to determine what’s acceptable / unacceptable to their organisation. The constraint was to avoid labeling a site, showing the raw distribution turned out to be the right call.</p>
+<div class="proto-embed">
+    <div class="prototype-heading">App monitoring prototype</div>
+  <iframe src="https://delicate-taffy-cbfa36.netlify.app/" title="UIM prototype" loading="lazy"></iframe>
+</div>
+<h1 id="deep-dive-into-user-setup-monitoring">Deep dive into User setup monitoring</h1>
+<p>When customers are using cloud products the performance they experience is a factor of three things:</p>
+<ol>
+<li>The application - Like Jira / Confluence</li>
+<li>The network</li>
+<li>The machine</li>
+</ol>
+<p>Worse network speeds or an outdated browser could significantly affect the performance they experience. Instead of pushing this onto admins we wanted to enable them to make decisions to improve their user setups.</p>
+<p>We identified the core user setup dimensions that played a significant role in performance by analysing our existing data. These were the four dimensions:</p>
+<ol>
+<li>Network speed</li>
+<li>OS</li>
+<li>HTTP protocol</li>
+<li>CPU core count</li>
+</ol>
+<p>Now the challenge was “How might we let admins correlate performance issues caused by user setup and total users using that setup?” On the surface it looked like a correlation problem, how do you show load time and user count for a particular dimension? With the help of AI-prototyping tools I explored different ideas to reconcile these two data points.</p>
+<div class="img-full"><img src="/User-setup-explorations.png" alt="Explorations for user setup charts"></div>
+<p>All the charts put the burden of correlation and interpretation on admins. Customers spent way too much time concluding which user setup dimensions to act on. I reframed the problem to “How might we enable admins to understand the suboptimal user setups.”</p>
+<p>Two design decisions emerged out of this reframing:</p>
+<ol>
+<li>Pre bucketing : Instead of showing raw load times per dimension I decided to pre bucket user setups into categories of good/fair/bad based on objective technical knowledge. 100 Mbps is better than 10 Mbps.</li>
+<li>Each dimension is assigned one of the three states: Investigate, Assure, Inconclusive. The key thinking is that we want to inform admins that there’s something to be considered in this dimension.</li>
+</ol>
+<div class="img-full"><img src="/User-setup-final.png" alt="Final design for user setup charts"></div>
+<p>The final iteration for user setup charts has the four dimensions pre bucketed into Optimal/Adequate/Basic. For each of those categories we show them the P75 load time. Each of the dimension card has one of the three states assigned. When the customer would like to investigate a dimension that’s experiencing performance impact they’ll be able to see more granular details for that dimension.</p>
+<div class="img-full"><img src="/user-setup.gif" alt="Final design gif for user setup charts"></div>
+<h1 id="further-improvements">Further improvements</h1>
+<p>One further area of improvement the team is considering is using AI to suggest customers ways to improve their performance. We had a twofold design strategy for insights and recommendations:</p>
+<ol>
+<li>Contextual: insights live near the data they describe, this way the admins have full context</li>
+<li>Aggregated: a central place where all recommendations are collected for periodic triage</li>
+</ol>
+<p>In the first iteration we dropped the aggregated recommendations because we wanted to gain confidence on the recommendations we are providing and its impact. Here are some reasons why aggregated recommendations were dropped:</p>
+<ol>
+<li>Org admin persona: The organisation admins didn’t have enough context of the individual products to act on the recommendations</li>
+<li>Product admin: Product admins were unable to determine which one to fix first, for example when we said too many work types are causing performance impact on the issue view. They were unable to determine which work types were candidates for optimisation. This required further investigation with the teams that were using or not using those work types.</li>
+</ol>
+<h1 id="customer-impact">Customer impact</h1>
+<p>The project addressed an enterprise gap for monitoring the Atlassian portfolio. With close collaboration with these customers we were able to build something that led to enterprise account renewals of organisations like JPMC, Nvidia and Mercedes.</p>
+<p>Beyond that this project marked the first milestone of solving the top task for performance monitoring for enterprise admins. Future milestones will be addressing other areas like API monitoring, Traffic monitoring and Usage monitoring. The first milestone gives the confidence enterprises need to trust Atlassian to invest in this area.</p>
+<h1 id="reflections">Reflections</h1>
+<h2 id="moving-back-to-ic---lead-designer">Moving back to IC - Lead Designer</h2>
+<p>I moved back to full time individual contributor with this project. The design industry had started rapidly changing during this time with tools like Claude code, Replit, V0 and figma make. I wanted to get my hands dirty and master the new ways of working.</p>
+<h2 id="impact-of-ai-on-productivity">Impact of AI on productivity</h2>
+<p>AI tooling had a significant impact on the velocity of the project and iterations. Even with significant pivots in direction the team didn’t feel like a lot of effort and time was invested in the wrong places.</p>
+<ul>
+<li>Realistic data in the prototype removed the need for a separate eng spike.</li>
+<li>Exploring various types of charts via AI prototyping tools was significantly faster than manually doing it on figma.</li>
+<li>Choosing the right colors was easy when a single prompt could produce 50+ palettes.</li>
+</ul> </div> </div> <script type="module" src="/_astro/_slug_.astro_astro_type_script_index_0_lang.B31rm3zP.js"></script> </body> </html>
