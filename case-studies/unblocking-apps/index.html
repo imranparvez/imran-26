@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en" data-astro-cid-skaurlmh> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v6.0.8"><title>Unblocking apps for customers to move to cloud – Imran Parvez</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Montserrat:wght@600&display=swap" rel="stylesheet"><script data-goatcounter="https://imparvez.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script><script>
+<!DOCTYPE html><html lang="en" data-astro-cid-skaurlmh> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/logo-black.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v6.0.8"><title>Unblocking apps for customers to move to cloud – Imran Parvez</title><meta property="og:type" content="website"><meta property="og:url" content="https://imranparvez.com/case-studies/unblocking-apps/"><meta property="og:title" content="Imran Parvez Portfolio"><meta property="og:image" content="https://imranparvez.com/link-preview.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Imran Parvez Portfolio"><meta name="twitter:image" content="https://imranparvez.com/link-preview.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Montserrat:wght@600&display=swap" rel="stylesheet"><script data-goatcounter="https://imparvez.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script><script>
       (function() {
         if (localStorage.getItem('theme') !== 'light') {
           document.documentElement.classList.add('dark');
@@ -26,9 +26,9 @@
 <hr>
 <h2 id="context">Context</h2>
 <h6 id="jira-is-nothing-without-the-apps">Jira is nothing without the apps</h6>
-<p>Enterprise on premise customers have very unique setups with several marketplace apps, integrations and privately built apps. Atlassian mandated the customers to move to cloud. Apps became the number 1 blocker to move to cloud because the apps that they were using were not available for cloud.</p>
+<p>Enterprise on premise customers have very unique setups with several marketplace apps, integrations and privately built apps. Atlassian mandated the customers to move to cloud. Apps became the number 1 blocker to move to cloud because the apps that they were using on premise were not available for cloud.</p>
 <h6 id="partners-cannot-build-apps-for-jira-cloud">Partners cannot build apps for Jira Cloud</h6>
-<p>Partners who built apps for Jira on premise had the freedom to build whatever they like. But on cloud they were blocked because the platform wasn’t ready to support them.</p>
+<p>Partners who built apps for Jira on premise had the freedom to build whatever they like. But on cloud they were blocked because the platform wasn’t ready.</p>
 <hr>
 <h2 id="process">Process</h2>
 <h3 id="phase-1-mapping-the-problem-through-workshops">Phase 1: Mapping the problem through workshops</h3>
@@ -93,7 +93,10 @@
 <h3 id="phase-3-designing-the-forge-extensibility">Phase 3: Designing the Forge extensibility</h3>
 <p>The analysis from workshops and the BLOCKER project produced a clear map of what Cloud was missing.</p>
 <p>I designed the Forge modules that addressed these gaps. Over FY21–FY24, we went from 2 experimental modules to 30 Jira Forge modules, including the two most impactful ones unique to Forge: UI modifications and Forge Custom Fields.</p>
+<p>In the gif below you can see all the modules documented on the atlassian forge documentation.</p>
 <img src="/jira-modules.gif" alt="Jira sprint board showing the three-layer structure: Epics, Tasks, and Sync tasks" style="width:100%;border-radius:8px;margin:24px 0;">
+<h2 id="prototype">Prototype</h2>
+<p>In the prototype below you can see some of the most popular jira forge modules. At the bottom there’s a control panel, click on any of the module to see it action.</p>
 <div class="proto-embed">
     <div class="prototype-heading">Forge modules prototype</div>
   <iframe src="https://courageous-paprenjak-31ee93.netlify.app/" title="UIM prototype" loading="lazy"></iframe>
@@ -104,18 +107,18 @@
 <h3 id="ui-modifications">UI modifications</h3>
 <p>UI Modifications (UIM) - a Forge module that allows third-party apps to change how Jira fields behave at runtime on the Global Issue Create view, Issue View, and Transition View.</p>
 <p>One of the top apps that we were trying to unblock for Jira cloud was Scriptrunner behaviours. The app specialized in changing fields in run time, for example: when the field priority is set as high, make the due date field required.</p>
-<p>What makes UIM special as a design case study is that it’s no-ui-design. I was designing a system where third-party code modifies native UI that Atlassian team didn’t build, running in an invisible iframe, with no direct visual output of its own. You’re designing an API that <em>is</em> the product - there are no pixels to push, only behaviors to define.</p>
+<p>What makes UIM special as a design case study is that it’s no-ui-design. I was designing a system where third-party code modifies native UI that Atlassian team didn’t build. It runs in an invisible iframe, with no direct visual output of its own. You’re designing an API that <em>is</em> the product - there are no pixels to push, only behaviors to define.</p>
 <p>The module was designed as a <strong>platform capability</strong>, not a one-off solution for ScriptRunner. This meant any partner could build behaviours-style apps, which led to an entirely new app category on the Marketplace: field behaviour and issue template apps. Below lets take a look at some of the most important design decisions</p>
 <img src="/uim-methods.png" alt="UIM methods listed for execution, modifying and inspecting" style="width:100%;border-radius:8px;margin:24px 0;">
 <h4 id="decision-1-do-we-inform-the-users-for-changes-made-by-apps">Decision 1: “Do we inform the users for changes made by apps?”</h4>
 <p>Context: One of the behaviours we shipped was onChange. onChange allows partners to listen to changes of value of any field and react to it. For example: When user changes priority, run a pre-configured behavior. Lets assume the pre-configured behaviour makes the assignee to be set to team lead. Now we had to decide if we are going to notify the users when the assignee is set to team lead.</p>
 <img src="/uim-decision-01.png" alt="UIM sets assignee to team lead" style="width:100%;border-radius:8px;margin:24px 0;">
-<p><em>What we decided was</em> : When onChange resolves I decided: <strong>don’t show any notification</strong> just silently update the field.</p>
+<p><em>What was decided</em> : When onChange resolves I decided: <strong>don’t show any notification</strong> just silently update the field.</p>
 <p><em>Why this is interesting for platform design:</em> This is a deliberate <strong>anti-pattern</strong> - most design guidelines say “always confirm state changes.” I argued that informing users would create more confusion than clarity, because users didn’t initiate the change knowingly. The app is doing what the admin configured. Drawing attention to it undermines the seamlessness.</p>
 <h4 id="decision-2-should-we-allow-users-to-interact-with-the-fields-while-uim-is-still-running">Decision 2: “Should we allow users to interact with the fields while UIM is still running”</h4>
 <p>Context: When users want to create an issue, UIM can be configured to run some pre-configured behaviours on it. Lets assume that when issue type bug is selected and description field is filled with a template. There can be cases when the UIM configured there didn’t run instantly. Would we allow customers to edit the description or would we block the field. In the gif below you can see that when the user was typing out their description suddenly they lose everything and a template appears from UIM. This can happen because of the delay in UIM execution.</p>
 <img src="/uim-decision-02.gif" alt="UIM sets description while editing" style="width:100%;border-radius:8px;margin:24px 0;">
-<p>Decision: I decided to disable those fields which UIM is trying to modify until the pre configured behaviour is run.</p>
+<p><em>What was decided</em>: I decided to disable those fields which UIM is trying to modify until the pre configured behaviour is run.</p>
 <p><em>Why this matters:</em> Designing onChange touched various platform questions:</p>
 <ol>
 <li>How does Jira know which fields will be affected before the app finishes running?</li>
@@ -123,10 +126,19 @@
 <li>What does “touched” mean across different field types and editing modes (setVisible, setName, setDescription, setValue, setRequired)</li>
 </ol>
 <p>This led to creating platform changes in which we request a list of fields that UIM is going to affect on the issue operations like create, view or edit. The decision was made to disable to the fields until they are ready to be interacted by the user. I saw that if users could continue editing fields while an app was still computing changes, the result was often not flexibility but ambiguity: values changed unexpectedly, admin rules partially applied, and the final state of the form was hard to reason about. In some cases, this produced exactly the kind of “wrong data and horrible UX” we were trying to avoid.</p>
-<p>For me, this was an important design lesson. My original instinct was to allow users to interact with the fields while UIM is still running. The better answer was “design the system so conflict is less likely.”</p>
-<h4 id="decision-3-allow-issue-creation-even-if-onchange-fails-explore-4-33">Decision 3: “Allow issue creation even if onChange fails” (Explore 4, §3.3)</h4>
-<p>When onChange errors, you decided: <strong>no partial execution, no retry, let the user continue</strong>. The error is informational, not blocking.</p>
-<p><em>Why this matters:</em> This is where the tension between admin intent and user agency is sharpest. The admin <em>wanted</em> the onChange to enforce a rule. It failed and the system chose the user’s side - they shouldn’t be blocked from doing their work because a third-party script broke.</p>
+<p>For me, this was an important design lesson. My original instinct was to allow users to interact with the fields while UIM is still running. I believed that when they are creating an issue we shouldn’t be hindering their progress. The better answer was “design the system so conflict is less likely and there’s no work lost.”</p>
+<h4 id="decision-3-allow-issue-creation-even-if-onchange-fails">Decision 3: “Allow issue creation even if onChange fails”</h4>
+<p>Context: Lets take the same example as decision 1, When user changes priority, run a pre-configured behavior. Lets assume the pre-configured behaviour makes the assignee to be set to team lead. Now lets take the scenario that onChange script failed to run for whatever reason. We now needed to make a decision whether to inform the user or silently fail.</p>
+<p><em>What was decided</em>: <strong>no partial execution, no retry, let the user continue</strong>. The error is informational, not blocking.</p>
+<p><em>Why this matters:</em> This is where the tension between admin intent and user agency is sharpest. The admin <em>wanted</em> the onChange to enforce a rule. It failed and the system chose the user’s side - they shouldn’t be blocked from doing their work because a third-party script broke. We allow the user to continue creating the form and avoid interrupting them.</p>
+<hr>
+<p>Impact:</p>
+<ol>
+<li>In 2024 - Forge hit a major milestone of 1000 apps built on Forge platform. In comparison it took 7+ years for Connect, the previous developer platform to reach that milestone.</li>
+<li>Built 30+ forge modules for partners to extend apps and unlock new business opportunities.</li>
+<li>We went from 9% customers unblocked to 83% customers unblocked by end of 2023. We had 189 out of top 200 apps available.</li>
+<li>At the end of 2024 there were 9000+ installs of apps that use the module UI modifications, making it the most popular business category on marketplace.</li>
+</ol>
 <hr>
 <h1 id="reflections">Reflections</h1>
 <h2 id="team-growth">Team growth</h2>
